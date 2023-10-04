@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt update
+sudo apt install whiptail -y
 whiptail --msgbox "Welcome to the AryaOS installer.\n\nThis installer will install the configurations I use for my Linux desktop. It uses BSPWM." 10 50
 $maindir = $(pwd)
 whiptail --yesno "Do you want to proceed with the installation?" 10 50
@@ -27,7 +28,7 @@ if [ $? -eq 0 ]; then
     sudo chown -R $username:$username /home/$username
 
     echo "Installing essential programs..."
-    sudo apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python3-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev libjsoncpp-dev feh bspwm sxhkd kitty rofi python3-pip thunar lxpolkit x11-xserver-utils unzip yad wget pulseaudio pavucontrol -y
+    sudo apt install polybar feh bspwm sxhkd kitty rofi python3-pip thunar lxpolkit x11-xserver-utils unzip yad wget pulseaudio pavucontrol -y
     echo "Installing optional programs..."
     sudo apt install neofetch lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm fonts-font-awesome -y
 
@@ -74,22 +75,9 @@ if [ $? -eq 0 ]; then
     sudo rm -r $HOME/.bashrc
     sudo cp -r $builddir/.bashrc
 
-    echo "Installing polybar..."
-    sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
-    git clone https://github.com/jaagr/polybar.git
-    cd polybar
-    echo "Please say yes to everything EXCEPT anything related to I3-WM!
-    sudo ./build.sh
-
-    echo "Installing Polybar themes..."
-    chmod +x polybar-themes/setup.sh
-    echo "Please press 1 when prompted for a number."
-    ./polybar-themes/setup.sh
-    chmod +x $HOME/.config/polybar/launch.sh
-
     cd $maindir
     sudo rm -r ~/.config/bspwm/bspwmrc
-    sudo cp dotconfig/bspwm/bspwmrc ~/.config/bspwm/
+    sudo cp dotconfig/bkspwm/bspwmrc ~/.config/bspwm/
     whiptail --msgbox "Installation completed successfully!" 8 50
 else
     whiptail --msgbox "Installation canceled." 8 50

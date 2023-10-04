@@ -1,2 +1,2 @@
 # AryaOS
-My AryaOS script with my configuration for Debian/Ubuntu/ZorinOS.
+AryaOS is a custom post-installation script made in bash. It is available for Debian-based distros. Ubuntu has a small problem with the polybar installation, so there is a seperate script for Ubuntu and Ubuntu-based distributions.
