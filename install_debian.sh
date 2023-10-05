@@ -75,6 +75,12 @@ if [ $? -eq 0 ]; then
     sudo rm -r $HOME/.bashrc
     sudo cp -r $builddir/.bashrc
 
+    echo "Installing Polybar themes..."
+    chmod +x ./polybar-themes/setup.sh
+    echo "Please press 1 when prompted for a number."
+    ./polybar-themes/setup.sh
+    chmod +x $HOME/.config/polybar/launch.sh
+
     cd $maindir
     sudo rm -r ~/.config/bspwm/bspwmrc
     sudo cp dotconfig/bkspwm/bspwmrc ~/.config/bspwm/

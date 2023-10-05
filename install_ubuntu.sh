@@ -82,7 +82,7 @@ if [ $? -eq 0 ]; then
     sudo ./build.sh
 
     echo "Installing Polybar themes..."
-    chmod +x polybar-themes/setup.sh
+    chmod +x ./polybar-themes/setup.sh
     echo "Please press 1 when prompted for a number."
     ./polybar-themes/setup.sh
     chmod +x $HOME/.config/polybar/launch.sh
