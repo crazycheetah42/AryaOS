@@ -78,7 +78,7 @@ if [ $? -eq 0 ]; then
     sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
     git clone https://github.com/jaagr/polybar.git
     cd polybar
-    echo "Please say yes to everything EXCEPT anything related to I3-WM!
+    echo "Please say yes to everything EXCEPT anything related to I3-WM!"
     sudo ./build.sh
 
     echo "Installing Polybar themes..."

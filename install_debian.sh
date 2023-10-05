@@ -3,7 +3,7 @@
 sudo apt update
 sudo apt install whiptail -y
 whiptail --msgbox "Welcome to the AryaOS installer.\n\nThis installer will install the configurations I use for my Linux desktop. It uses BSPWM." 10 50
-$maindir = $(pwd)
+maindir=$(pwd)
 whiptail --yesno "Do you want to proceed with the installation?" 10 50
 
 if [ $? -eq 0 ]; then
