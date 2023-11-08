@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [[ $1 == "update" ]]; then
+    echo "Updating ainstall packages..."
+    echo "Removing old package lists..."
+    sudo rm -r /packagerepos/aryaos/packages_debs.txt
+    echo "Getting a list of packages from the repo..."
+    sudo wget https://raw.githubusercontent.com/crazycheetah42/AryaOS_repo/main/package_urls.txt
+    sudo mv package_urls.txt /packagerepos/aryaos/
+    echo "The ainstall package list has been updated."
+fi
+if [[ $1 == "install" ]]; then
+    echo "Installing $2..."
+    sleep 2
+    echo "Finding package URL from repo packages file..."
+    url=$(grep "$2" /packagerepos/aryaos/package_urls.txt | awk '{print}')
+
+    echo "Found package url: $url"
+    echo "Downloading and installing package..."
+    sudo wget $url -P /packages/aryaos/
+    echo "Making it executable with chmod..."
+    sudo chmod +x /packages/aryaos/$2
+    echo "Installed $2 ainstall package."
+fi
+if [[ $1 == "upgrade" ]]; then
+    echo "Upgrade feature coming soon! If you already came up with an upgrade feature, please open a pull request in my GitHub repository: https://github.com/crazycheetah42/AryaOS"
+fi
+if [[ $1 == "remove" ]]; then
+    echo "Removing $2..."
+    sudo rm -r /packages/aryaos/$2
+    echo "Successfully removed $2"
+fi
