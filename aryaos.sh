@@ -1,4 +1,5 @@
-echo "Welcome to the AryaOS Installer Script!"
+echo "Welcome to the AryaOS Installer Script! The installation will begin in 5 seconds..."
+sleep 5
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 sudo apt update
