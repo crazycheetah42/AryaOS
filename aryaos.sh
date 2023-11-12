@@ -1,5 +1,4 @@
-echo "Welcome to the AryaOS Installer Script! Would you like dark or light theme in installation?"
-read -p "Type l or d to continue: " theme_mode
+echo "Welcome to the AryaOS Installer Script!"
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 sudo apt update
@@ -22,8 +21,4 @@ sudo wget https://github.com/crazycheetah42/AryaOS/releases/download/v1.0.0/Orch
 sudo tar -xvf Orchis-Grey.tar.xz
 sudo rm -r Orchis-Grey.tar.xz
 cd ~
-if [[ $theme_mode == "l" ]]; then
-	gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Grey-Light"
-elif [[ $theme_mode == "d" ]]; then
-	gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Grey-Dark"
-fi
+gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Grey-Light"
