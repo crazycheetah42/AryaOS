@@ -17,9 +17,4 @@ sudo mkdir -p /packages/aryaos/
 sudo mkdir -p /packagerepos/aryaos/
 ainstall update
 export PATH=$PATH:/packages/aryaos
-cd /usr/share/themes
-sudo wget https://github.com/crazycheetah42/AryaOS/raw/master/Orchis-Grey.tar.xz
-sudo tar -xvf Orchis-Grey.tar.xz
-sudo rm -r Orchis-Grey.tar.xz
-cd ~
-gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Grey-Light"
+echo "The installer is finished. See After Installation on the AryaOS website to customize your system further!"
