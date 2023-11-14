@@ -18,7 +18,7 @@ sudo mkdir -p /packagerepos/aryaos/
 ainstall update
 export PATH=$PATH:/packages/aryaos
 cd /usr/share/themes
-sudo wget https://github.com/crazycheetah42/AryaOS/releases/download/v1.0.0/Orchis-Grey.tar.xz
+sudo wget https://github.com/crazycheetah42/AryaOS/raw/master/Orchis-Grey.tar.xz
 sudo tar -xvf Orchis-Grey.tar.xz
 sudo rm -r Orchis-Grey.tar.xz
 cd ~
