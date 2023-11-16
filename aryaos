@@ -1,0 +1,41 @@
+#!/bin/python3
+import os
+
+def default_installation():
+    os.system("wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -")
+    os.system('echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list')
+    os.system("sudo apt update && sudo apt full-upgrade -y")
+    os.system("sudo apt install stacer preload gimp pitivi simplescreenrecorder flameshot signal-desktop kdeconnect gnome-tweaks papirus-icon-theme htop git chrome-gnome-shell gnome-shell-extension-manager -y")
+    os.system("sudo systemctl enable --now preload")
+    os.system("wget https://raw.githubusercontent.com/crazycheetah42/AryaOS/master/ainstall")
+    os.system("sudo mv ainstall /usr/bin/")
+    os.system("sudo chmod +x /usr/bin/ainstall")
+    os.system("sudo mkdir -p /packages/aryaos/ && sudo mkdir -p /packagerepos/aryaos/")
+    os.system("ainstall update")
+    os.system("export PATH=$PATH:/packages/aryaos")
+    print("The Default Installation of AryaOS has finished, enjoy your new installation! Check the After Installation page on the AryaOS Website for more customizations.")
+def minimal_installation():
+    os.system("sudo apt update && sudo apt full-upgrade -y")
+    os.system("sudo apt install preload gimp pitivi simplescreenrecorder gnome-tweaks htop git -y")
+    os.system("sudo systemctl enable --now preload")
+    os.system("wget https://raw.githubusercontent.com/crazycheetah42/AryaOS/master/ainstall")
+    os.system("sudo mv ainstall /usr/bin/")
+    os.system("sudo chmod +x /usr/bin/ainstall")
+    os.system("sudo mkdir -p /packages/aryaos/ && sudo mkdir -p /packagerepos/aryaos/")
+    os.system("ainstall update")
+    os.system("export PATH=$PATH:/packages/aryaos")
+    print("The Minimal Installation of AryaOS has finished, enjoy your new installation! Check the After Installation page on the AryaOS Website for more customizations.")
+def main():
+    print("Welcome to the AryaOS Installer! Let's get your system up and running.")
+    input("Press any key to continue...")
+    print("First, how do you want to install AryaOS?")
+    print("1. Default Installation - Main tools, packages, and extra optimizations")
+    print("2. Minimal Installation - Optimizations, required only packages")
+    user_input = input("Press '1' or '2': ")
+    if user_input == "1":
+        print("Installing AryaOS with default settings...")
+        default_installation()
+    if user_input == "2":
+        print("Installing AryaOS with minimal settings...")
+        minimal_installation()
+main()
